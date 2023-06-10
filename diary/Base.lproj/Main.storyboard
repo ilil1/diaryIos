@@ -58,6 +58,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="180" height="200"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="nYI-OP-kmo" id="yl1-kH-7dv"/>
+                                            <outlet property="titleLable" destination="7f1-Ss-f3Q" id="gag-o7-HaS"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -83,6 +87,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="67f-ip-UZD" id="HBq-5B-Crq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,7 +126,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="eQy-nW-Yr7"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -160,8 +166,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="일기 작성" id="NNn-GJ-eRF">
-                        <barButtonItem key="rightBarButtonItem" title="등록" id="DbC-KN-v4h"/>
+                        <barButtonItem key="rightBarButtonItem" title="등록" id="DbC-KN-v4h">
+                            <connections>
+                                <action selector="tapConfirmButton:" destination="b9w-1A-ESA" id="hEV-sk-9mr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmButton" destination="DbC-KN-v4h" id="J4K-Dt-XXY"/>
+                        <outlet property="contentsTextView" destination="dLh-Tt-lEA" id="jxd-JF-7x4"/>
+                        <outlet property="dateTextField" destination="ctB-xW-Tnd" id="iOD-X8-zhg"/>
+                        <outlet property="titleTextField" destination="VRY-KQ-88r" id="uZM-18-wlR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMh-2D-UJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
