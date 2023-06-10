@@ -16,6 +16,7 @@
 		F2B1F5622A3451F00065AE62 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1F5612A3451F00065AE62 /* DiaryCell.swift */; };
 		F2B1F5642A3452790065AE62 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1F5632A3452790065AE62 /* StarViewController.swift */; };
 		F2B1F5662A3454BD0065AE62 /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B1F5652A3454BD0065AE62 /* StarCell.swift */; };
+		F2EC33712A3465D900602B45 /* WriteDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC33702A3465D900602B45 /* WriteDiaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F2B1F5612A3451F00065AE62 /* DiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
 		F2B1F5632A3452790065AE62 /* StarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
 		F2B1F5652A3454BD0065AE62 /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
+		F2EC33702A3465D900602B45 /* WriteDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				F2B1F5612A3451F00065AE62 /* DiaryCell.swift */,
 				F2B1F5632A3452790065AE62 /* StarViewController.swift */,
 				F2B1F5652A3454BD0065AE62 /* StarCell.swift */,
+				F2EC33702A3465D900602B45 /* WriteDiaryViewController.swift */,
 			);
 			path = diary;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B1F5522A3449240065AE62 /* ViewController.swift in Sources */,
+				F2EC33712A3465D900602B45 /* WriteDiaryViewController.swift in Sources */,
 				F2B1F5662A3454BD0065AE62 /* StarCell.swift in Sources */,
 				F2B1F54E2A3449240065AE62 /* AppDelegate.swift in Sources */,
 				F2B1F5502A3449240065AE62 /* SceneDelegate.swift in Sources */,
