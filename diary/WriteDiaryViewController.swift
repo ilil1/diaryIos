@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol WriteDiaryViewDelegate: AnyObject {
+    
+    func didSelectRegister(diary: Diary)
+}
+
 class WriteDiaryViewController: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
@@ -16,7 +21,8 @@ class WriteDiaryViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIBarButtonItem!
     
     private let datePicker = UIDatePicker()
-    private var diaryDate :Date?
+    private var diaryDate: Date?
+    weak var delegate: WriteDiaryViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,19 +63,21 @@ class WriteDiaryViewController: UIViewController {
     
     @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker) {
         let formmater = DateFormatter()
-        formmater.dateFormat = "yyyy년 MM월 dd일(EEEE)"
-        //formmater.locale = Locale(identifier: "ko_KR")
-        formmater.locale = Locale(identifier: "en_US")
+        formmater.dateFormat = "yyyy년 MM월 dd일(EEEEE)"
+        formmater.locale = Locale(identifier: "ko_KR")
+        //formmater.locale = Locale(identifier: "en_US")
         //formmater.dateFormat = "yyyy년 MM월 dd일 (EEEEE)"
         self.diaryDate = datePicker.date
         self.dateTextField.text = formmater.string(from: datePicker.date)
         self.dateTextField.sendActions(for: .editingChanged)
     }
     
+    //여기서는 TextField 를 감지하는것을 @objc 으로 만듬
     @objc private func titleTextFieldDidChange(_ textField: UITextField) {
         self.validateInputField()
     }
     
+    //여기서는 TextField 를 감지하는것을 @objc 으로 만듬
     @objc private func dateTextFieldDidChange(_ textField: UITextField) {
         self.validateInputField()
     }
@@ -86,12 +94,24 @@ class WriteDiaryViewController: UIViewController {
     }
     
     @IBAction func tapConfirmButton(_ sender: Any) {
+        guard let title = self.titleTextField.text else {
+            return
+        }
+        guard let contents = self.contentsTextView.text else {
+            return
+        }
+        guard let date = self.diaryDate else { return }
+        let diary = Diary(title: title, contents: contents, date: date, isStar: false)
+        self.delegate?.didSelectRegister(diary: diary)
+        self.navigationController?.popViewController(animated: true)
+        
     }
 }
 
 extension WriteDiaryViewController: UITextViewDelegate {
+
+    //여기서 textView 감지하는 것을 인터페이스로 만듬
     func textViewDidChange(_ textView: UITextView) {
         self.validateInputField()
     }
-
 }
