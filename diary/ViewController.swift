@@ -21,7 +21,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(editDiaryNotification(_:)),
+            name: NSNotification.Name("editDiary"), object: nil
+        )
     }
     
     private func configureCollectionView() {
@@ -33,6 +37,15 @@ class ViewController: UIViewController {
         self.collectionView.dataSource = self
     }
     
+    @objc func editDiaryNotification(_ notification: Notification) {
+        guard let diary = notification.object as? Diary else { return }
+        guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
+        self.diaryList[row] = diary
+        self.diaryList = self.diaryList.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
+        self.collectionView.reloadData()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let  wireDiaryViewController = segue.destination as? WriteDiaryViewController {
             wireDiaryViewController.delegate = self
@@ -114,6 +127,7 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
+//다이어리가 작성되면, 관련 데이터를 여기서 건너 받아서 diaryList에 넣어준다.
 extension ViewController: WriteDiaryViewDelegate {
     func didSelectRegister(diary: Diary) {
         self.diaryList.append(diary)
