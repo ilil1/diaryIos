@@ -109,6 +109,7 @@ extension ViewController: UICollectionViewDelegate {
         let diary = self.diaryList[indexPath.row]
         viewController.diary = diary
         viewController.indexPath = indexPath
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -120,6 +121,13 @@ extension ViewController: WriteDiaryViewDelegate {
             $0.date.compare($1.date) == .orderedDescending
         })
         self.collectionView.reloadData()
+    }
+}
+
+extension ViewController: DiaryDetailViewDelegate {
+    func didSelectDelete(indexPath: IndexPath) {
+        self.diaryList.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
     }
 }
 
